@@ -1,0 +1,6 @@
+{
+    "version": 2,
+    "builds": [{ "src": "*.md", "use": "@now/md" }],
+    "alias": "xen.one"
+  }
+  
