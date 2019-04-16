@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "builds": [{ "src": "*.md", "use": "@now/md" }],
+    "builds": [{ "src": "*.html", "use": "@now/html-minifier" }],
     "alias": "xen.one"
   }
   
