@@ -1,0 +1,52 @@
+{
+  "name": "xen.one",
+  "version": "1.0.0",
+  "description": "A simple landing page",
+  "repository": "git@github.com:sikhote/xen.one.git",
+  "author": "David Sinclair <david@sinclair.tech> (https://sinclair.tech)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.9",
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
+    "babel-plugin-emotion": "^10.0.9",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "eslint-config-xo-react": "^0.19.0",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "prettier": true,
+    "ignores": [
+      "lib/localization"
+    ],
+    "extends": "xo-react",
+    "rules": {
+      "unicorn/filename-case": 0,
+      "no-console": 2,
+      "no-underscore-dangle": 2,
+      "import/no-unassigned-import": 0
+    },
+    "env": [
+      "browser",
+      "node"
+    ],
+    "space": 2,
+    "settings": {
+      "import/core-modules": [
+        "styled-jsx",
+        "styled-jsx/css"
+      ]
+    }
+  }
+}

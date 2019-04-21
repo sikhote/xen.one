@@ -1,6 +1,7 @@
 {
     "version": 2,
-    "builds": [{ "src": "*.html", "use": "@now/html-minifier" }],
+    "builds": [
+      { "src": "package.json", "use": "@now/next" }
+    ],
     "alias": "xen.one"
   }
-  
