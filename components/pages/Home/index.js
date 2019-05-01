@@ -1,19 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Global } from '@emotion/core';
 import queryString from 'query-string';
+import { get } from 'lodash';
+import axios from 'axios';
 import { bar, categories } from '../../../lib/bookmarks';
 import domains from '../../../lib/domains';
 import Text from '../../Text';
+import { colors, fontFamilies } from '../../../lib/styling';
 import styles from './styles';
 
+const setWeatherUrl = (lat, lon) => {
+  const weatherQuery = queryString.stringify({
+    color: colors.text,
+    fontFamily: fontFamilies.system,
+    units: 'ca',
+    textColor: colors.text,
+    bgColor: colors.a6,
+    transparency: false,
+    currentDetailsOption: true,
+  });
+
+  window.weatherUrl = `https://darksky.net/widget/graph-bar/${lat},${lon}/ca12/en.js?${weatherQuery}`;
+};
+
 const Home = () => {
+  const [hasLocation, setHasLocation] = useState(false);
   const [site, setSite] = useState('');
-  const query = queryString.stringify({
+  const searchQuery = queryString.stringify({
     prefill: `Search ${site}`,
     focus: 'yes',
     site,
   });
-  const url = `https://duckduckgo.com/search.html?${query}`;
+  const searchUrl = `https://duckduckgo.com/search.html?${searchQuery}`;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      axios.get('http://www.geoplugin.net/json.gp').then(res => {
+        const lat = get(res, 'data.geoplugin_latitude');
+        const lon = get(res, 'data.geoplugin_longitude');
+
+        setWeatherUrl(lat, lon);
+        setHasLocation(true);
+      });
+    }
+  }, []);
 
   return (
     <div>
@@ -27,7 +57,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
-      <iframe css={styles.search} src={url} frameBorder="0" />
+      <iframe css={styles.search} src={searchUrl} frameBorder="0" />
       <ul css={styles.domainsList}>
         {domains.map(domain => (
           <li
@@ -39,6 +69,13 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      {hasLocation && (
+        <iframe
+          css={styles.weather}
+          src="/static/weather.html"
+          frameBorder="0"
+        />
+      )}
       <ul css={styles.categoriesList}>
         {categories.map(({ title, items }) => (
           <li key={title} css={styles.categoriesListItem}>

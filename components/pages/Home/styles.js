@@ -47,11 +47,12 @@ export default {
     marginRight: spacing.a4,
   },
   search: {
-    overflow: 'hidden',
-    margin: 0,
-    padding: 0,
     width: 408,
     height: 40,
+  },
+  weather: {
+    width: 850,
+    height: 355,
   },
   domainsList: {
     paddingBottom: spacing.a6,
@@ -59,6 +60,7 @@ export default {
   domainsListItem: {
     display: 'inline-block',
     marginRight: spacing.a4,
+    cursor: 'pointer',
   },
   categoriesList: {
     listStyle: 'none',

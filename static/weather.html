@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      iframe {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.write(`<script src="${window.parent.weatherUrl}"><\/script>`);
+    </script>
+  </body>
+</html>
