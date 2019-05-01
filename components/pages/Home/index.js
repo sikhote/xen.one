@@ -35,9 +35,9 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      axios.get('http://www.geoplugin.net/json.gp').then(res => {
-        const lat = get(res, 'data.geoplugin_latitude');
-        const lon = get(res, 'data.geoplugin_longitude');
+      axios.get('https://ipapi.co/json/').then(res => {
+        const lat = get(res, 'data.latitude');
+        const lon = get(res, 'data.longitude');
 
         setWeatherUrl(lat, lon);
         setHasLocation(true);
