@@ -15,12 +15,11 @@ const setWeatherUrl = (lat, lon) => {
     fontFamily: fontFamilies.system,
     units: 'ca',
     textColor: colors.text,
-    bgColor: colors.a6,
-    transparency: false,
+    transparency: true,
     currentDetailsOption: true,
   });
-
-  window.weatherUrl = `https://darksky.net/widget/graph-bar/${lat},${lon}/ca12/en.js?${weatherQuery}`;
+  window.weatherUrl1 = `https://darksky.net/widget/graph-bar/${lat},${lon}/ca12/en.js?${weatherQuery}`;
+  window.weatherUrl2 = `https://darksky.net/widget/default/${lat},${lon}/ca12/en.js?${weatherQuery}`;
 };
 
 const Home = () => {
@@ -63,7 +62,7 @@ const Home = () => {
           <li
             key={domain}
             css={styles.domainsListItem}
-            onClick={() => setSite(domain)}
+            onClick={() => setSite(domain === 'all' ? '' : domain)}
           >
             <Text fontSizeKey="a1">{domain}</Text>
           </li>

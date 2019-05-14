@@ -10,11 +10,18 @@
       iframe {
         overflow: hidden;
       }
+      iframe:first-of-type {
+        height: 286px;
+      }
+      iframe:last-of-type {
+        height: 302px;
+      }
     </style>
   </head>
   <body>
     <script>
-      document.write(`<script src="${window.parent.weatherUrl}"><\/script>`);
+      document.write(`<script src="${window.parent.weatherUrl1}"><\/script>`);
+      document.write(`<script src="${window.parent.weatherUrl2}"><\/script>`);
     </script>
   </body>
 </html>

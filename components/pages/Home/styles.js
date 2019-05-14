@@ -52,7 +52,9 @@ export default {
   },
   weather: {
     width: 850,
-    height: 355,
+    height: 600,
+    background: colors.a6,
+    marginBottom: spacing.a6,
   },
   domainsList: {
     paddingBottom: spacing.a6,
