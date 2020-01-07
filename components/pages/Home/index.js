@@ -18,8 +18,8 @@ const setWeatherUrl = (lat, lon) => {
     transparency: true,
     currentDetailsOption: true,
   });
-  window.weatherUrl1 = `https://darksky.net/widget/graph-bar/${lat},${lon}/ca12/en.js?${weatherQuery}`;
-  window.weatherUrl2 = `https://darksky.net/widget/default/${lat},${lon}/ca12/en.js?${weatherQuery}`;
+  window.weatherUrl1 = `https://darksky.net/widget/graph-bar/${lat},${lon}/us12/en.js?${weatherQuery}`;
+  window.weatherUrl2 = `https://darksky.net/widget/default/${lat},${lon}/us12/en.js?${weatherQuery}`;
 };
 
 const Home = () => {
@@ -34,13 +34,14 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      axios.get('https://ipapi.co/json/').then(res => {
-        const lat = get(res, 'data.latitude');
-        const lon = get(res, 'data.longitude');
-
+      const onResponse = pos => {
+        const lat = get(pos, 'coords.latitude') || '33.039139';
+        const lon = get(pos, 'coords.longitude') || '-117.295425';
         setWeatherUrl(lat, lon);
         setHasLocation(true);
-      });
+      };
+
+      navigator.geolocation.getCurrentPosition(onResponse, onResponse);
     }
   }, []);
 
