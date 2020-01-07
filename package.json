@@ -5,6 +5,7 @@
   "repository": "git@github.com:sikhote/xen.one.git",
   "author": "David Sinclair <david@sinclair.tech> (https://sinclair.tech)",
   "license": "MIT",
+  "engines": { "node": "10.x" },
   "scripts": {
     "dev": "next",
     "build": "next build",
