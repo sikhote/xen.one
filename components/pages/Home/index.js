@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Global } from '@emotion/core';
 import queryString from 'query-string';
 import { get } from 'lodash';
-import axios from 'axios';
 import { bar, categories } from '../../../lib/bookmarks';
 import domains from '../../../lib/domains';
 import Text from '../../Text';
