@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yarn install
+
 if yarn lint; then
   echo "✅ - Build can proceed"
   exit 1;
