@@ -1,6 +1,24 @@
+@mixin breakpoint($point) {
+  @if $point == a {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  @elseif $point == b {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @elseif $point == c {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+
 :root {
-  --color-green: rgb(13, 166, 120);
-  --font-family-normal: ;
+  --highlight: rgb(13, 166, 120);
+  --padding: clamp(1rem, 0.1rem + 2.5vw, 3rem);
 }
 
 * {
@@ -13,6 +31,7 @@ body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
   color: hsla(0, 0%, 50%, 1);
+  padding: 0 var(--padding) var(--padding) var(--padding);
 }
 
 a {
@@ -20,7 +39,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: var(--color-green);
+    color: var(--highlight);
   }
 }
 
@@ -28,35 +47,29 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
 
   & > * {
-    margin-top: 40px;
+    margin-top: var(--padding);
   }
 }
 
 .bar {
   ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     background: hsla(0, 0%, 5%, 1);
-    border-radius: 8px;
+    border-radius: 0.1rem;
+    padding: 0 6px;
+
+    @include breakpoint(a) {
+      width: 100%;
+    }
 
     li {
       text-align: center;
       flex: 0 0 auto;
-
-      &:first-child {
-        a {
-          padding-left: 24px;
-        }
-      }
-
-      &:last-child {
-        a {
-          padding-right: 24px;
-        }
-      }
 
       a {
         display: block;
@@ -71,6 +84,7 @@ main {
 .search {
   iframe {
     width: 400px;
+    max-width: 100%;
     height: 40px;
   }
 
@@ -84,24 +98,24 @@ main {
       cursor: pointer;
 
       &.active {
-        color: var(--color-green);
+        color: var(--highlight);
       }
     }
   }
 }
 
 .all {
-  margin-bottom: 20px;
+  max-width: 900px;
+  width: 100%;
 
   > ul {
     list-style: none;
-    width: 1200px;
-    columns: 240px;
-    gap: 40px;
+    columns: 180px;
+    gap: var(--padding);
 
     > li {
       break-inside: avoid;
-      margin-bottom: 20px;
+      margin-bottom: var(--padding);
 
       h2 {
         font-size: larger;

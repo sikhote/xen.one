@@ -5,9 +5,6 @@ import domains from 'lib/domains';
 
 const styles = {};
 
-// const lat = get(pos, 'coords.latitude') || '33.039139';
-// const lon = get(pos, 'coords.longitude') || '-117.295425';
-
 const Home = () => {
   const [site, setSite] = useState('');
   const searchQuery = new URLSearchParams({
