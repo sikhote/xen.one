@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yarn install
+npm install
 
-if yarn lint; then
+if npm run lint; then
   echo "✅ - Build can proceed"
   exit 1;
 else
